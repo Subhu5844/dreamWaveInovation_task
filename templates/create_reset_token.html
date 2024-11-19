@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Password Reset Token</title>
+</head>
+<body>
+    <h1>Create Password Reset Token for {{ user.first_name }} {{ user.last_name }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Create Token</button>
+    </form>
+</body>
+</html>

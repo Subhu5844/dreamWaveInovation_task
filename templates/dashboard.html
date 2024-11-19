@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 2.5em;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Dashboard container */
+        .dashboard-container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Stats section */
+        .stats {
+            margin: 30px 0;
+        }
+
+        .stats ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .stats li {
+            font-size: 1.1em;
+            margin: 8px 0;
+        }
+
+        /* Links section */
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.2em;
+            margin: 12px 0;
+        }
+
+        ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            color: #2980b9;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #e74c3c; /* Red background */
+            color: white; /* White text */
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px; /* Rounded corners */
+            text-decoration: none; /* Remove underline */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover transition */
+            margin-top: 20px; /* Top margin */
+            margin-bottom: 20px; /* Bottom margin */
+        }
+    
+        /* Hover effect */
+        .logout-btn:hover {
+            background-color: #c0392b; /* Darker red when hovered */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+    
+        /* Focus effect */
+        .logout-btn:focus {
+            outline: none; /* Remove default focus outline */
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.7); /* Red glow effect */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ user.first_name }}</h1>
+    <p>This is your dashboard. Only authenticated users can access it.</p>
+
+    <!-- Application Info -->
+    <h2>Application Statistics</h2>
+    <ul>
+        <li>Total Users: {{ total_users }}</li>
+        <li>Active Users: {{ active_users }}</li>
+        <li>Total Password Reset Tokens: {{ total_reset_tokens }}</li>
+        <li>Total Roles Assigned: {{ total_roles }}</li>
+    </ul>
+
+    <!-- Links to functionalities -->
+    <h2>Manage Users</h2>
+    <ul>
+        <li><a href="{% url 'create_user' %}">Create a New User</a></li>
+        <li><a href="{% url 'list_users' %}">View All Users</a></li>
+    </ul>
+
+    <h2>Role and Permission Management</h2>
+    <ul>
+        <li><a href="{% url 'list_role_permissions' %}">View Role Permissions</a></li>
+    </ul>
+
+    {% comment %} <h2>Password Reset Management</h2>
+    <ul>
+        <li><a href="{% url 'list_reset_tokens' %}">View Reset Tokens</a></li>
+    </ul> {% endcomment %}
+
+    <!-- Logout -->
+    <a  class="logout-btn" href="{% url 'logout' %}">Logout</a>
+</body>
+</html>

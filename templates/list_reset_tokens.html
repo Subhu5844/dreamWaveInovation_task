@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Password Reset Tokens</title>
+</head>
+<body>
+    <h1>Password Reset Tokens</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Token</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for token in tokens %}
+                <tr>
+                    <td>{{ token.user.first_name }} {{ token.user.last_name }}</td>
+                    <td>{{ token.token }}</td>
+                    <td>{{ token.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
